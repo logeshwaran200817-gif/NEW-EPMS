@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoWatch - Pollution Monitoring System</title>
+
+    <link rel="stylesheet" href="../CSS/EPMS.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">🌱 EcoWatch</div>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#global-map">World Map</a>
+        <a href="#monitoring">Monitoring</a>
+        <a href="#reports">Reports</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div>
+        <p class="tagline">A SMARTER WAY TO PROTECT OUR PLANET</p>
+
+        <h1>Monitor Pollution.<br>Protect Our Future.</h1>
+
+        <p>
+            Track environmental conditions, identify pollution
+            problems and encourage a cleaner community.
+        </p>
+
+        <a href="#global-map" class="primary-btn">
+            Explore World Map
+        </a>
+    </div>
+</section>
+
+<!-- GLOBAL POLLUTION MAP -->
+<section class="section" id="global-map">
+
+    <h2>🌍 Global Pollution Map</h2>
+
+    <p>Explore pollution locations worldwide.</p>
+
+    <div class="map-info">
+        <span>🟢 Sample monitoring locations</span>
+        <span>📍 Click markers for details</span>
+    </div>
+
+    <div id="pollutionMap"></div>
+
+</section>
+
+<!-- DASHBOARD -->
+<section class="section" id="monitoring">
+
+    <h2>Environmental Dashboard</h2>
+    <p>Example environmental readings</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🌫️</div>
+            <h3>Air Quality Index</h3>
+            <h2 id="aqi">85</h2>
+            <p>Moderate (sample)</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">💧</div>
+            <h3>Water Quality</h3>
+            <h2>72%</h2>
+            <p>Sample indicator</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔊</div>
+            <h3>Noise Level</h3>
+            <h2>55 dB</h2>
+            <p>Sample reading</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>Pollution Reports</h3>
+            <h2 id="reportCount">0</h2>
+            <p>Community reports</p>
+        </div>
+        <div class="map-search">
+    <input
+        type="text"
+        id="locationSearch"
+        placeholder="Search country, city or district..."
+    >
+
+    <button onclick="searchLocation()">
+        Search
+    </button>
+</div>
+
+<div id="map"></div>
+
+    </div>
+</section>
+
+<!-- POLLUTION TYPES -->
+<section class="section">
+
+    <h2>Types of Pollution</h2>
+
+    <div class="pollution-types">
+
+        <div class="type-card">
+            <h3>🌫️ Air Pollution</h3>
+            <p>Smoke, dust and harmful gases affecting air quality.</p>
+        </div>
+
+        <div class="type-card">
+            <h3>💧 Water Pollution</h3>
+            <p>Contamination of rivers, lakes and water sources.</p>
+        </div>
+
+        <div class="type-card">
+            <h3>🔊 Noise Pollution</h3>
+            <p>Excessive sound from vehicles and industries.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- REPORT FORM -->
+<section class="section report-section" id="reports">
+
+    <h2>Report Environmental Pollution</h2>
+
+    <p>Help your community report environmental problems.</p>
+
+    <form id="reportForm">
+
+        <label for="reporter">Your Name</label>
+        <input type="text" id="reporter"
+        placeholder="Enter your name" required>
+
+        <label for="pollutionType">Pollution Type</label>
+
+        <select id="pollutionType" required>
+            <option value="">Select pollution type</option>
+            <option>Air Pollution</option>
+            <option>Water Pollution</option>
+            <option>Noise Pollution</option>
+            <option>Land Pollution</option>
+        </select>
+
+        <label for="location">Location</label>
+        <input type="text" id="location"
+        placeholder="Enter city or location" required>
+
+        <label for="description">Description</label>
+        <textarea id="description"
+        placeholder="Describe the problem" required></textarea>
+
+        <button type="submit" class="primary-btn">
+            Submit Report
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <h3 class="recent-title">Recent Community Reports</h3>
+
+    <div id="reportList">
+        <p>No reports submitted yet.</p>
+    </div>
+
+</section>
+
+<!-- ANALYTICS -->
+<section class="section" id="analytics">
+
+    <h2>Pollution Analytics</h2>
+
+    <p>Illustrative weekly air quality data.</p>
+
+    <div class="chart-container">
+        <canvas id="pollutionChart"></canvas>
+    </div>
+    <div class="pollution-legend">
+    <span>🟢 Low Pollution</span>
+    <span>🟡 Moderate Pollution</span>
+    <span>🔴 High Pollution</span>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+
+    <h2>About EcoWatch</h2>
+
+    <p>
+        EcoWatch is an environmental pollution monitoring
+        project designed to display sample pollution readings,
+        collect community reports and create awareness
+        about environmental protection.
+    </p>
+
+    <p>
+        Our mission is to encourage people to participate
+        in building a cleaner and healthier environment.
+    </p>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <h2>🌱 EcoWatch</h2>
+    <p>Protect Nature. Protect Life.</p>
+    <p>© 2026 EcoWatch Student Project</p>
+</footer>
+
+<!-- Leaflet JS: Load before EPMS.js -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Your JavaScript -->
+<script src="../JAVA_SCRIPT/EPMS.js"></script>
+
+
+</body>
+</html>
